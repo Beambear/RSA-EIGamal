@@ -9,7 +9,7 @@ public class FastExponentiationAlgorithm {
         }
         int loop=0;
         long y=1;
-        String result = "run"+loop+" [x:"+x+" e:"+e+" Y:"+y+"]";
+//        String result = "run"+loop+" [x:"+x+" e:"+e+" Y:"+y+"]";
         //System.out.println(result);
         while(e != 0)
         {
@@ -24,7 +24,7 @@ public class FastExponentiationAlgorithm {
                 e=e-1;
                 y=(y*x);
             }
-            result = "run"+loop+" [x:"+x+" e:"+e+" Y:"+y+"]";
+//            result = "run"+loop+" [x:"+x+" e:"+e+" Y:"+y+"]";
          //   System.out.println(result);
         }
         return y;
@@ -34,7 +34,7 @@ public class FastExponentiationAlgorithm {
     {
         int loop=0;
         long y=1;
-        String result = "run"+loop+" [x:"+x+" e:"+e+" Y:"+y+"]";
+//        String result = "run"+loop+" [x:"+x+" e:"+e+" Y:"+y+"]";
 //        System.out.println(result);
         while(e != 0)
         {
@@ -49,7 +49,7 @@ public class FastExponentiationAlgorithm {
                 e=e-1;
                 y=(y*x)%m;
             }
-            result = "run"+loop+" [x:"+x+" e:"+e+" Y:"+y+"]";
+//            result = "run"+loop+" [x:"+x+" e:"+e+" Y:"+y+"]";
 //            System.out.println(result);
         }
         return y;

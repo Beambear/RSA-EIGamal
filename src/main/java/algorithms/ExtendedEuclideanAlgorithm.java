@@ -22,10 +22,10 @@ public class ExtendedEuclideanAlgorithm {
         long sCurr = sOri-numQ*sNew;// compute sNew
         long tCurr = tOri-numQ*tNew;// compute tNew
 
-        String result = "m = "+sNew + ", n = "+tNew;    //+" -> "+ sCurr +"*"+numA+"+"+tCurr+"*"+numB + "= 0";
-        String step = numA+"/"+numB+"="+numQ+"+"+numA%numB+"  ";
-        step += "si="+sOri+"-"+numQ+"*"+sNew+"="+sCurr+"    "; //Si
-        step += "ti="+tOri+"-"+numQ+"*"+tNew+"="+tCurr; //Ti
+//        String result = "m = "+sNew + ", n = "+tNew;    //+" -> "+ sCurr +"*"+numA+"+"+tCurr+"*"+numB + "= 0";
+//        String step = numA+"/"+numB+"="+numQ+"+"+numA%numB+"  ";
+//        step += "si="+sOri+"-"+numQ+"*"+sNew+"="+sCurr+"    "; //Si
+//        step += "ti="+tOri+"-"+numQ+"*"+tNew+"="+tCurr; //Ti
 //        System.out.println(step);
         if(numB ==1)  // check stop point
         {

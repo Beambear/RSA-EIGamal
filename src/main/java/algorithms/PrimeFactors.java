@@ -13,7 +13,7 @@ public class PrimeFactors {
         while (n%2==0)
         {
             factors.add((long)2);
-            System.out.print(2 + " ");
+//            System.out.print(2 + " ");
             n /= 2;
         }
         // n must be odd at this point. So we can
@@ -24,7 +24,7 @@ public class PrimeFactors {
             while (n%i == 0)
             {
                 factors.add(i);
-                System.out.print(i + " ");
+//                System.out.print(i + " ");
                 n /= i;
             }
         }
@@ -32,7 +32,7 @@ public class PrimeFactors {
         // n is a prime number greater than 2
         if (n > 2){
             factors.add(n);
-            System.out.print(n);
+//            System.out.print(n);
         }
         return factors;
     }

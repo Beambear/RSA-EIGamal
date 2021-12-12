@@ -37,7 +37,7 @@ public class ComputePhi {
             }
         }
 //        System.out.println("\nphi("+numN+")="+numRP.size());
-        System.out.println(numRP);
+//        System.out.println(numRP);
         return numRP.size();
     }
 }

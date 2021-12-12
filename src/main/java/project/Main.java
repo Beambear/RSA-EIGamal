@@ -3,16 +3,17 @@ package project;
 public class Main {
 
     public static void main(String[] args) {
-//	// write your code here
+        Main driver = new Main();
+        driver.rsaSet();
+
+    }
+
+    public void rsaSet(){
         AlgorithmsLib test = new AlgorithmsLib();
         RSA doIt = new RSA();
-//        System.out.println(doIt.generateKeys());//
-        doIt.encrypt(12345,552659,9121481);
-        System.out.println("break");
-        doIt.decryptCiphertext(4704635,1380605,3041099);
-        System.out.println("find key");
-//        doIt.findDecryptionKey(1380605,3041099);
-
-
+        doIt.generateKeys();
+//        doIt.encrypt(1234,1523917  ,8638613);
+//        doIt.decrypt( 380701, 368013 ,534757);
+//        doIt.eavesdropDecryptCiphertext( 380701,245417,534757);
     }
 }
