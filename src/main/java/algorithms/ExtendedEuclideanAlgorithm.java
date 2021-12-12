@@ -43,4 +43,31 @@ public class ExtendedEuclideanAlgorithm {
             return numInverse;
         }
     }
+
+    public boolean booleanExtendedEuclideanAlgorithm(int numA, int numB, int sOri, int sNew, int tOri, int tNew){
+
+        int numQ = numA/numB; //compute quotient
+        int sCurr = sOri-numQ*sNew;// compute sNew
+        int tCurr = tOri-numQ*tNew;// compute tNew
+
+        String result = "m = "+sNew + ", n = "+tNew;    //+" -> "+ sCurr +"*"+numA+"+"+tCurr+"*"+numB + "= 0";
+        String step = numA+"/"+numB+"="+numQ+"+"+numA%numB+"  ";
+        step += "si="+sOri+"-"+numQ+"*"+sNew+"="+sCurr+"    "; //Si
+        step += "ti="+tOri+"-"+numQ+"*"+tNew+"="+tCurr; //Ti
+//        System.out.println(step);
+        if(numB ==1)  // check stop point
+        {
+//            System.out.println("GCD = 1, they are relatively prime.");
+//            System.out.println(result);
+            return true;
+        }
+        int numR= numA%numB; //compute remainder numR
+        if(numR ==0){ // check stop point
+//            System.out.println("GCD ="+numB+", they are not relatively prime.");
+//            System.out.println(result);
+            return true;
+        }else{
+            return booleanExtendedEuclideanAlgorithm(numB, numR,sNew,sCurr,tNew,tCurr);
+        }
+    }
 }

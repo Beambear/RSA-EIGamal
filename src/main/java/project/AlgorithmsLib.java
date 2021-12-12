@@ -1,9 +1,6 @@
 package project;
 
-import algorithms.ComputePhi;
-import algorithms.ExtendedEuclideanAlgorithm;
-import algorithms.FastExponentiationAlgorithm;
-import algorithms.PrimeFactors;
+import algorithms.*;
 
 import java.util.ArrayList;
 
@@ -25,6 +22,8 @@ public class AlgorithmsLib {
     //5.1 rsaEncrypt    //compute RSA encrypt result
     //5.2 rsaFindDecryptionKey //find decryption key by given Keypub(numE, numD)
     //5.3 rsaDecrypt    //decrypt ciphertext by given Ciphertext and Keypub(numE,numD)
+    //9.1 MillerRabinTest //check if a number is pseudo prime number
+    //10.1 Blum-Blum-Shub Random Number Generator
 
     //1.2
     public long computeInverse(long numA, long numB){
@@ -52,5 +51,17 @@ public class AlgorithmsLib {
     public long fastExponentiationAlgorithm(long x,long e, long m){
         FastExponentiationAlgorithm doIt = new FastExponentiationAlgorithm();
         return doIt.fastExponentiation(x,e,m);
+    }
+
+    //9.1
+    public boolean millerRabinTest(long numTest){
+        MillerRabinTest doIt = new MillerRabinTest();
+        return doIt.millerRabinTest(numTest);
+    }
+
+    //10.1
+    public long getBBSRandomNumber(){
+        BBSRandomNumber doIt = new BBSRandomNumber();
+        return doIt.randomNumberBSS();
     }
 }

@@ -6,7 +6,7 @@ public class EuclideanAlgorithm {
         public boolean euclideanAlgorithm(long numA, long numB){
             if(numA < 0 || numB < 0)
             {
-                System.out.println("numA or numB should be positive");
+//                System.out.println("numA or numB should be positive");
             }else if (numA < numB){
                 long numT = numA;
                 numA =numB;
@@ -21,11 +21,11 @@ public class EuclideanAlgorithm {
                 return true;
             }
             if(numR ==0){
-                System.out.println(step);
+//                System.out.println(step);
                 //System.out.println("GCD ="+numB+", they are not relatively prime.");
                 return false;
             }else{
-                System.out.println(step);
+//                System.out.println(step);
                 return euclideanAlgorithm(numB, numR);
             }
         }

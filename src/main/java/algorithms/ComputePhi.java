@@ -14,14 +14,14 @@ public class ComputePhi {
         ArrayList<Long> numRP = new ArrayList<Long>();
         for(long i=1;i<numN;i++)
         {
-            System.out.println("\n["+i+","+numN+"]");
+//            System.out.println("\n["+i+","+numN+"]");
             if(isRelativelyPrime(i,numN)==true)
             {
                 numRP.add(i);
             }
         }
-        System.out.println("\nphi("+numN+")="+numRP.size());
-        System.out.println(numRP);
+//        System.out.println("\nphi("+numN+")="+numRP.size());
+//        System.out.println(numRP);
         return numRP;
     }
 
@@ -30,13 +30,13 @@ public class ComputePhi {
         ArrayList<Long> numRP = new ArrayList<Long>();
         for(long i=1;i<numN;i++)
         {
-            System.out.println("\n["+i+","+numN+"]");
+//            System.out.println("\n["+i+","+numN+"]");
             if(isRelativelyPrime(i,numN)==true)
             {
                 numRP.add(i);
             }
         }
-        System.out.println("\nphi("+numN+")="+numRP.size());
+//        System.out.println("\nphi("+numN+")="+numRP.size());
         System.out.println(numRP);
         return numRP.size();
     }

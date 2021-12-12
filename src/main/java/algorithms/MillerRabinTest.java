@@ -5,6 +5,7 @@ import java.util.Random;
 public class MillerRabinTest {
     public boolean millerRabinTest(long numN)
     {
+        //check special conditions
         if(numN == 2|| numN ==3){
             return true;
         }
@@ -13,15 +14,16 @@ public class MillerRabinTest {
             return false;
         }
 
+        //run test
         for(int i=0;i<4;i++)
         {
             if(isPrime((numN))==false)
             {
-                System.out.println(numN+" is not prime");
+//                System.out.println(numN+" is not prime");
                 return false;
             }
         }
-        System.out.println(numN+" is prime");
+//        System.out.println(numN+" is prime");
         return true;
     }
 
@@ -37,16 +39,16 @@ public class MillerRabinTest {
         }
         FastExponentiationAlgorithm doIt = new FastExponentiationAlgorithm();
         long numB = doIt.fastExponentiation(numA,numM,numN);
-        if(numB ==1){
+        if(numB ==1){   //if numB=1modN
             return true;
         }
         for(long i=0;i<numK;i++)
         {
-            if(numB ==(numN-1))
+            if(numB ==(numN-1)) // if B RP to numN
             {
                 return true;
             }else{
-                numB = (numB*numB)%numN;
+                numB = (numB*numB)%numN; //go next
             }
         }
         return false;
@@ -69,22 +71,4 @@ public class MillerRabinTest {
         return array;
     }
 
-
-
-    //calculate(x^y)%p
-    public long multiPower(long numX, long numY, long numP)
-    {
-        long result = 1;
-        numX = numX%numP;
-        while(numY>0)
-        {
-            if((numY&1)==1)
-            {
-                result = (result * numX)%numP;
-            }
-            numY = numY >> 1; //numY = numY/2
-            numX = (numX * numX) %numP;
-        }
-        return result;
-    }
 }
