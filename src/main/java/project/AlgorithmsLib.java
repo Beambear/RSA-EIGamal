@@ -25,7 +25,18 @@ public class AlgorithmsLib {
     //9.1 MillerRabinTest //check if a number is pseudo prime number
     //10.1 Blum-Blum-Shub Random Number Generator
 
+    //1.1
+    public long findGCD(long numA,long numB){
+        EuclideanAlgorithm doIt = new EuclideanAlgorithm();
+        return doIt.findGCD(numA,numB);
+    }
+
     //1.2
+    public boolean isRelativePrime(long numA, long numB){
+        ExtendedEuclideanAlgorithm doIt = new ExtendedEuclideanAlgorithm();
+        return doIt.booleanExtendedEuclideanAlgorithm(numA,numB,1,0,0,1);
+    }
+
     public long computeInverse(long numA, long numB){
         ExtendedEuclideanAlgorithm doIt = new ExtendedEuclideanAlgorithm();
         return doIt.computeInverse(numA, numB,1,0,0,1);
@@ -63,5 +74,10 @@ public class AlgorithmsLib {
     public long getBBSRandomNumber(){
         BBSRandomNumber doIt = new BBSRandomNumber();
         return doIt.randomNumberBSS();
+    }
+
+    public long getBBSPrimeNumber(){
+        BBSRandomNumber doIt = new BBSRandomNumber();
+        return doIt.getBBSPrimeNumber();
     }
 }

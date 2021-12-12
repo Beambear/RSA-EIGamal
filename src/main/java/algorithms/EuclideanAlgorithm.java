@@ -1,6 +1,7 @@
 package algorithms;
     //1.1 Euclidean Algorithm
     //Find the greatest common divisors
+    //Also can find the least common multiple
     //辗转相除法//欧几里得算法//求最大公约数（GCD）
 public class EuclideanAlgorithm {
         public boolean euclideanAlgorithm(long numA, long numB){
@@ -27,6 +28,28 @@ public class EuclideanAlgorithm {
             }else{
 //                System.out.println(step);
                 return euclideanAlgorithm(numB, numR);
+            }
+        }
+
+        public long findGCD(long numA, long numB){
+            if(numA < 0 || numB < 0)
+            {
+            }else if (numA < numB){
+                long numT = numA;
+                numA =numB;
+                numB =numT;
+            }
+            long numR= numA%numB;
+            long numC= numA/numB;
+            if(numB ==1)
+            {
+                return 1;
+            }
+            if(numR ==0){
+                //System.out.println("GCD ="+numB+", they are not relatively prime.");
+                return numB;
+            }else{
+                return findGCD(numB, numR);
             }
         }
 }

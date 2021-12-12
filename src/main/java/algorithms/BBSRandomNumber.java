@@ -3,10 +3,22 @@ package algorithms;
 import java.util.Random;
 
 public class BBSRandomNumber {
+
+    public long getBBSPrimeNumber(){
+        long currNum;
+        MillerRabinTest test = new MillerRabinTest();
+        do{
+            currNum = randomNumberBSS();
+        }
+        while(test.millerRabinTest(currNum)==false);
+         return currNum;
+    }
+
     public long randomNumberBSS(){
         long numP = getRandomPrime();
         long numQ = getRandomPrime();
         long numN = numP*numQ;
+//        System.out.println("p: "+numP+",q: "+numQ);
         ComputePhi compute = new ComputePhi();
 //        System.out.println("numN: "+numN);
         long[] seedChosen = new long[13];
@@ -41,17 +53,25 @@ public class BBSRandomNumber {
 
     public long getRandomPrime(){
 
-        long randomNum = getRandomNum();
         MillerRabinTest test = new MillerRabinTest();
-        while( is3Mod4(randomNum)==false || test.millerRabinTest(randomNum)==false)
+        long randomNum = getRandomNum();
+        boolean flag = false;
+        while(flag == false)
         {
             randomNum = getRandomNum();
+            if(is3Mod4(randomNum)==true && test.millerRabinTest(randomNum)==true)
+            {
+//                System.out.println(randomNum+",test: "+test.millerRabinTest(randomNum));
+                return randomNum;
+            }
         }
         return randomNum;
     }
 
     public boolean is3Mod4(long num){
-        long result = num%4;
+        FastExponentiationAlgorithm doIt = new FastExponentiationAlgorithm();
+//        long result = num%4;
+        long result = doIt.fastExponentiation(num,1,4);
         if(result == 3)
         {
             return true;

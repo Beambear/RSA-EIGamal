@@ -39,6 +39,7 @@ public class MillerRabinTest {
         }
         FastExponentiationAlgorithm doIt = new FastExponentiationAlgorithm();
         long numB = doIt.fastExponentiation(numA,numM,numN);
+//        long numB = powMRT(numA,numM,numN);
         if(numB ==1){   //if numB=1modN
             return true;
         }
@@ -71,4 +72,31 @@ public class MillerRabinTest {
         return array;
     }
 
+    //The FastExponentiation Algorithm will cause error when calculate large number in MillerRabinTest
+    //compute a^b%m
+    private long powMRT(long x, long y, long p){
+        long res = 1; // Initialize result
+
+        x = x % p; // Update x if it is more than or
+        // equal to p
+
+        if (x == 0)
+            return 0; // In case x is divisible by p;
+
+        while (y > 0)
+        {
+
+            // If y is odd, multiply x with result
+            if ((y & 1) != 0)
+            {
+                res = (res * x) % p;
+
+            }
+
+            // y must be even now
+            y = y >> 1; // y = y/2
+            x = (x * x) % p;
+        }
+        return res;
+    }
 }
