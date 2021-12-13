@@ -71,9 +71,9 @@ public class AlgorithmsLib {
     }
 
     //4.2
-    public long babyStepGiantStep(long numA, long numB, long numC){//find log(numB）numA in Zx(numC).
+    public long babyStepGiantStep(long generator, long publicKeyAlice, long numP){//find log(g）numKey in Zx(numP).
         BabyStepGiantStep doIt = new BabyStepGiantStep();
-        return doIt.bsbg(numA,numB,numC);
+        return doIt.bsbg(generator,publicKeyAlice,numP);
     }
 
     //9.1

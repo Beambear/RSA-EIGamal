@@ -59,11 +59,12 @@ public class EIGamal {
     //  P=C2/C1^d mod p = C2 * (C1^d)^(-1) mod p
     //  C1 =publicKeyAlice   C2= Cipher text
     //
-    public void decrypt(long numC1, String numC2, long keyS, long numP){
+    public void decrypt(long numC1, String numC2, String keyS, long numP){
         //Use extended Euclidean to compute (C1^d)^(-1) first.
         long c2 = Long.valueOf(numC2);
+        long keySecret = Long.valueOf(keyS);
         AlgorithmsLib lib = new AlgorithmsLib();
-        long numX = lib.fastExponentiationAlgorithm(numC1,keyS, numP);
+        long numX = lib.fastExponentiationAlgorithm(numC1,keySecret, numP);
         long c1Inv = lib.computeInverse(numX,numP);
         long result = c1Inv * c2 % numP;
         System.out.println("decrypt result: "+result);
@@ -78,8 +79,7 @@ public class EIGamal {
     public void eavesdropDecryptCiphertext(long numP,long generator,long publicKeyAlice, String cipherText, long publicKeyBob){
         //1. compute Alice's K by babyStepGiantStep
         AlgorithmsLib lib = new AlgorithmsLib();
-        long keyAlice = lib.babyStepGiantStep(publicKeyAlice,generator,numP);
-//        long keyAlice = lib.babyStepGiantStep(188,3,223); //find log(numB）numA in Zx(numC).
+        String keyAlice = String.valueOf(lib.babyStepGiantStep(generator,publicKeyAlice,numP));
         System.out.println("bsgs result: "+keyAlice);
         //2.compute m=t*b^(-k) (mod p)
         decrypt(publicKeyBob, String.valueOf(cipherText), keyAlice,numP);

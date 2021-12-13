@@ -49,19 +49,19 @@ public class BabyStepGiantStep {
             long left = doFast.fastExponentiation(bResult,i,0); //(b-1)^i
             left = numE*left;   //a*(b-1)^i
             left = doFast.fastExponentiation(left,1,numP);  //a*(b-1)^(i) mod P
-//            System.out.println("When i="+i+", left="+left);
+            System.out.println("When i="+i+", left="+left);
 
             for(int j=0;j<bJModList.size();j++){
                 long currBJMod = bJModList.get(j);
                 if(left == currBJMod){
-//                    System.out.println("i="+i+", numM="+numM+", j="+j);
+                    System.out.println("i="+i+", numM="+numM+", j="+j);
                     result = i*numM +j;
                     return result;
                 }
             }
 
         }
-//        System.out.println("search failed");
+        System.out.println("search failed");
         result = numX * bResult;
         return result;
     }
