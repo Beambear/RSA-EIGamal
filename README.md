@@ -9,4 +9,5 @@ This project used Junit as unit test. There are three class to test different pa
 
 User manual :
 Run the main method.
-  It will show "1.EIGamal 2.RSA"
+  It will show "1.EIGamal 2.RSA 3.STOP" and ask for a intput (1) (2)or (3) to excute different parts.
+  
