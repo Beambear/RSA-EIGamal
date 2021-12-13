@@ -17,8 +17,9 @@ public class Main {
     }
     public static void main(String[] args) {
         Main driver = new Main();
-        System.out.println("1.EIGamal\n2.RSA");
+        System.out.println("1.EIGamal\n2.RSA\n3.STOP");
         Scanner keyBoard = new Scanner(System.in);
+        System.out.print("Input(1.2.3):");
         String inPut = keyBoard.next();
         switch(inPut){
             case "1":
@@ -28,6 +29,8 @@ public class Main {
                 driver.rsaSet();
                 break;
             case "3":
+                break;
+            case "4":
                 driver.test();
                 break;
         }
