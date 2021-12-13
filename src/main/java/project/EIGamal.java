@@ -26,7 +26,7 @@ public class EIGamal {
 
         //return key set
         long[] keySet = {numP,numAlpha,pubKey};
-        System.out.println("Public key set:{P: "+numP+", generator: "+numAlpha+", pubKey: "+pubKey+"}");
+        System.out.println("Public key set:{P: "+numP+", generator: "+numAlpha+", pubKeyBob: "+pubKey+"}");
         System.out.println("Secret Key: {"+numD+"}");
         return keySet;
     }
@@ -36,7 +36,7 @@ public class EIGamal {
     //  C1= a^K mod P =（numAlpha ^ numK) mod (numP)
     //  C2= (txt*Y)^k mod p =((numPtxt * pubKey) ^ numK） mod (numP)
     //
-    public long[] encrypt(long numPtxt, long numP, long numAlpha, long pubKey)
+    public long[] encrypt(long numPtxt, long numP, long generator, long pubKeyBob)
     {
         //get random numK
         Random currR = new Random();
@@ -44,12 +44,12 @@ public class EIGamal {
 
         // compute C1 / public K
         AlgorithmsLib lib = new AlgorithmsLib();
-        long numC1 = lib.fastExponentiationAlgorithm(numAlpha,numK,numP);
+        long numC1 = lib.fastExponentiationAlgorithm(generator,numK,numP);
         // compute C2 / Cipher
-        long numC2 = numPtxt * lib.fastExponentiationAlgorithm(pubKey,numK,numP);
+        long numC2 = numPtxt * lib.fastExponentiationAlgorithm(pubKeyBob,numK,numP);
 
         //return cipher txt
-        System.out.println("public K ="+numC1+", Cipher = "+numC2);
+        System.out.println("publicKeyAlice C1="+numC1+", Cipher C2= "+numC2);
         long[] cipherResut ={numC1,numC2};
         return cipherResut;
     }
@@ -57,6 +57,7 @@ public class EIGamal {
     //
     //  decrypt cipher text (numC1,numC2) with numD and numP
     //  P=C2/C1^d mod p = C2 * (C1^d)^(-1) mod p
+    //  C1 =publicKeyAlice   C2= Cipher text
     //
     public void decrypt(long numC1, String numC2, long keyS, long numP){
         //Use extended Euclidean to compute (C1^d)^(-1) first.
@@ -65,9 +66,24 @@ public class EIGamal {
         long numX = lib.fastExponentiationAlgorithm(numC1,keyS, numP);
         long c1Inv = lib.computeInverse(numX,numP);
         long result = c1Inv * c2 % numP;
-        System.out.println(result);
+        System.out.println("decrypt result: "+result);
     }
 
+    //
+    // known generator, numP, publicKeyBob, publicKeyAlice, cipherTextAlice
+    // need to find keySecret to break encrypt
+    // 1.compute Alice's k by evaluating the discrete logarithm k=log(a)r in numP, where a=generator, r=publicKeyAlice
+    // 2.compute m=t*b^(-k) (mod p),where t =C2 cipher text, b= publicKeyBob
+    //
+    public void eavesdropDecryptCiphertext(long numP,long generator,long publicKeyAlice, String cipherText, long publicKeyBob){
+        //1. compute Alice's K by babyStepGiantStep
+        AlgorithmsLib lib = new AlgorithmsLib();
+        long keyAlice = lib.babyStepGiantStep(publicKeyAlice,generator,numP);
+//        long keyAlice = lib.babyStepGiantStep(188,3,223); //find log(numB）numA in Zx(numC).
+        System.out.println("bsgs result: "+keyAlice);
+        //2.compute m=t*b^(-k) (mod p)
+        decrypt(publicKeyBob, String.valueOf(cipherText), keyAlice,numP);
+    }
 
     //
     //sometime the same number while get incorrect answer.

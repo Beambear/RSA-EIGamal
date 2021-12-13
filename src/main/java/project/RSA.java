@@ -74,13 +74,13 @@ public class RSA {
         //find factors of numD
         AlgorithmsLib lib = new AlgorithmsLib();
 //        System.out.println("find factors of numD："+numN);
-        lib.primeFactors(numN);
+        ArrayList<Long> primeFactors = lib.primeFactors(numN);
         //find inverse of numE in phi(numD);
 //        System.out.println("find inverse of "+numE+" in phi("+numN+");");
-        long phiN = lib.computePhiNumber(numN);
+        long phiN = (primeFactors.get(0)-1)*(primeFactors.get(1)-1);
 //        System.out.println("phi("+numN+")="+phiN);
         long decryptionKey = lib.computeInverse(numE,phiN);
-        System.out.println("Decryption key ="+decryptionKey);
+        System.out.println("Decryption key ="+decryptionKey+", P="+primeFactors.get(0)+", Q="+primeFactors.get(1));
         return decryptionKey;
     }
 
@@ -90,9 +90,6 @@ public class RSA {
     public void eavesdropDecryptCiphertext(long numC, long numE, long numN){
         long decryptionKey = findDecryptionKey(numE,numN);
         AlgorithmsLib lib = new AlgorithmsLib();
-        ArrayList<Long> primeFactors = lib.primeFactors(numN);
-
-        long phi = (primeFactors.get(0)-1)*(primeFactors.get(1)-1);
 //        System.out.println("phi ="+phi);
 //        System.out.println("\nCompute c^e mod (N):");
 //        System.out.println(numC+","+decryptionKey+","+numN);

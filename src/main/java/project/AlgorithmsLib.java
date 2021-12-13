@@ -70,6 +70,12 @@ public class AlgorithmsLib {
         return doIt.isPrimitiveRoot(numtry,numP);
     }
 
+    //4.2
+    public long babyStepGiantStep(long numA, long numB, long numC){//find log(numB）numA in Zx(numC).
+        BabyStepGiantStep doIt = new BabyStepGiantStep();
+        return doIt.bsbg(numA,numB,numC);
+    }
+
     //9.1
     public boolean millerRabinTest(long numTest){
         MillerRabinTest doIt = new MillerRabinTest();
