@@ -5,6 +5,9 @@ import java.util.Random;
 
 public class RSA {
 
+    //
+    //generate key set for RSA
+    //
     public long[] generateKeys(){
         //Compute N,L(middle number, not in key),E,D
         AlgorithmsLib lib = new AlgorithmsLib();
@@ -39,23 +42,34 @@ public class RSA {
 //        System.out.println("numD: "+numD);
 
         //store keys in arrayE,D,N
-        System.out.println("key set { numE:"+numE+", numD:"+numD+", numN:"+numN+"}");
+        System.out.println("key set {numE:"+numE+", numD:"+numD+", numN:"+numN+"}");
         long[] keys = {numE,numD,numN};
         return keys;
     }
 
+    //
+    //  encrypt plain text (numP) with numE and numN
+    //  C=(p^e) mod n
+    //
     public void encrypt(long numP, long numE, long numN){
         AlgorithmsLib lib = new AlgorithmsLib();
         long result = lib.fastExponentiationAlgorithm(numP,numE,numN);
         System.out.println("RSA encrypt result= "+result);
     }
 
+    //
+    //  decrypt cipher text (numC) with numD and numN
+    //  P=(c^d) mod n
+    //
     public void decrypt(long numC, long numD, long numN){
         AlgorithmsLib lib = new AlgorithmsLib();
         long result = lib.fastExponentiationAlgorithm(numC,numD,numN);
         System.out.println("RSA decrypt result= "+result);
     }
 
+    //
+    //  find decryption key with known public key numE and numN
+    //
     public long findDecryptionKey(long numE, long numN){
         //find factors of numD
         AlgorithmsLib lib = new AlgorithmsLib();
@@ -70,6 +84,9 @@ public class RSA {
         return decryptionKey;
     }
 
+    //
+    //  evasdrop and decrypt cipher text (numC) by known public key numE and numN
+    //
     public void eavesdropDecryptCiphertext(long numC, long numE, long numN){
         long decryptionKey = findDecryptionKey(numE,numN);
         AlgorithmsLib lib = new AlgorithmsLib();
@@ -83,8 +100,10 @@ public class RSA {
         System.out.println("RSA eavesdrop and decrypt result= "+result);
     }
 
+    //
     //sometime the same number while get incorrect answer.
-    //like 622, it is checked as prime about 5% chance. So write a double check method.
+    //like 622, about 5% chance it is checked as prime. So write a double check method to ensure that doesn't happen too open
+    //
     private long randomPrimeWDoubleCheck(){
         AlgorithmsLib lib = new AlgorithmsLib();
         long currentNum;

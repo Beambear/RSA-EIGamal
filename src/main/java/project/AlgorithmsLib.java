@@ -64,13 +64,19 @@ public class AlgorithmsLib {
         return doIt.fastExponentiation(x,e,m);
     }
 
+    //4.1
+    public boolean isPrimitiveRoot(long numtry, long numP){
+        PrimitiveRootSearchAlgorithm doIt = new PrimitiveRootSearchAlgorithm();
+        return doIt.isPrimitiveRoot(numtry,numP);
+    }
+
     //9.1
     public boolean millerRabinTest(long numTest){
         MillerRabinTest doIt = new MillerRabinTest();
         return doIt.millerRabinTest(numTest);
     }
 
-    //10.1
+    //10.1 For RSA
     public long getBBSRandomNumber(){
         BBSRandomNumber doIt = new BBSRandomNumber();
         return doIt.randomNumberBSS();
@@ -78,6 +84,12 @@ public class AlgorithmsLib {
 
     public long getBBSPrimeNumber(){
         BBSRandomNumber doIt = new BBSRandomNumber();
+        return doIt.getBBSPrimeNumber();
+    }
+
+    //10.1 For EIGamal
+    public long getBBSPNforEIGamal(){
+        BBSForEIGamal doIt = new BBSForEIGamal();
         return doIt.getBBSPrimeNumber();
     }
 }
