@@ -13,12 +13,12 @@ Run the main method.
   Then consol will show the next options, user can chose what they want to use by enter numbers.
   
   For example let's do a RSA generator key set, encrypt, decrypt and break cipher text.
-  //generate key set
+  generate key set
   1. we run the main method.
   2. enter 2 to chose RSA
   3. 1 to generate key set
   4. write down key set: numP: 2713,numQ: 2477.key set {numE:965323, numD:1304563, numN:6720101}
-  //encrypt
+  encrypt
   5. run main method again
   6. enter 2 to chose RSA
   7. enter 2 to chose encrypt
@@ -26,7 +26,7 @@ Run the main method.
   9. Console ask for 'public key E', we enter '965323' the numE we just got in key set.
   10. Console ask for 'prime number N', enter '6720101' the numN we just got in key set.
   11. Console output "RSA encrypt result = 3113265", which 4992330 is our cipher text.
-  //decrypt
+  decrypt
   12. run main method again
   13. enter 2 to chose RSA
   14. enter 3 to chose decrypt
@@ -34,7 +34,7 @@ Run the main method.
   16. Console ask for 'secret key D', enter '1304563' the numD we got in key set.
   17. Console ask for 'prime number N', enter '6720101' the numN in key set.
   18. Console output "RSA decrypt result = 6666"
-  //break cipher text.
+  break cipher text.
   19. run main method again
   20. enter 4 to chose break
   21. console ask for 'cipher text C', enter '3113265'
