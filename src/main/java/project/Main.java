@@ -4,6 +4,17 @@ import java.util.Scanner;
 
 public class Main {
 
+    public void test(){
+        System.out.println("test");
+        RSA test = new RSA();
+        test.eavesdropDecryptCiphertextForString(2090299036L,"2677074319","4048479451");
+        long result = 2090299036;
+        System.out.println(result);
+
+//        BabyStepGiantStep test = new BabyStepGiantStep();
+//        long result = test.bsbg(541239,845216,890231);
+//        System.out.println(result);
+    }
     public static void main(String[] args) {
         Main driver = new Main();
         System.out.println("1.EIGamal\n2.RSA");
@@ -16,10 +27,11 @@ public class Main {
             case "2":
                 driver.rsaSet();
                 break;
+            case "3":
+                driver.test();
+                break;
         }
-//        BabyStepGiantStep test = new BabyStepGiantStep();
-//        long result = test.bsbg(541239,845216,890231);
-//        System.out.println(result   );
+
     }
 
     public void eIGamalSet(){
@@ -43,26 +55,26 @@ public class Main {
                 doIt.encrypt(txtP,numP,numG,numKey);
                 break;
             case "3":
-                System.out.println("enter public key");
+                System.out.print("enter public key");
                 long numKey2 = Long.parseLong(keyBoard.next());
-                System.out.println("enter cipher text");
+                System.out.print("enter cipher text");
                 String numCipher = keyBoard.next();
-                System.out.println("enter secret key");
+                System.out.print("enter secret key");
                 String keyS = keyBoard.next();
-                System.out.println("enter prime number");
+                System.out.print("enter prime number");
                 long numP2 = Long.parseLong(keyBoard.next());
                 doIt.decrypt(numKey2,numCipher, keyS,numP2);
                 break;
             case "4":
-                System.out.println("enter prime number");
+                System.out.print("enter prime number");
                 long numP4 = Long.parseLong(keyBoard.next());
-                System.out.println("enter generator");
+                System.out.print("enter generator");
                 long generator4 = Long.parseLong(keyBoard.next());
-                System.out.println("enter public key Alice");
+                System.out.print("enter public key Alice");
                 long pubKA4 = Long.parseLong(keyBoard.next());
-                System.out.println("enter public key Bob");
+                System.out.print("enter public key Bob");
                 long pubKB4 = Long.parseLong(keyBoard.next());
-                System.out.println("enter cipher text");
+                System.out.print("enter cipher text");
                 String cipherText4 = keyBoard.next();
                 doIt.eavesdropDecryptCiphertext(numP4,generator4,pubKA4,cipherText4,pubKB4);
                 break;
@@ -95,7 +107,7 @@ public class Main {
             case "3":
                 System.out.print("enter cipher text C:");
                 long txtC = Long.parseLong(keyBoard.next());
-                System.out.println("enter secret key D:");
+                System.out.print("enter secret key D:");
                 long numD = Long.parseLong(keyBoard.next());
                 System.out.print("enter prime number N:");
                 long numN2 = Long.parseLong(keyBoard.next());

@@ -51,20 +51,22 @@ public class RSA {
     //  encrypt plain text (numP) with numE and numN
     //  C=(p^e) mod n
     //
-    public void encrypt(long numP, long numE, long numN){
+    public long encrypt(long txtP, long numE, long numN){
         AlgorithmsLib lib = new AlgorithmsLib();
-        long result = lib.fastExponentiationAlgorithm(numP,numE,numN);
+        long result = lib.fastExponentiationAlgorithm(txtP,numE,numN);
         System.out.println("RSA encrypt result= "+result);
+        return result;
     }
 
     //
     //  decrypt cipher text (numC) with numD and numN
     //  P=(c^d) mod n
     //
-    public void decrypt(long numC, long numD, long numN){
+    public long decrypt(long numC, long numD, long numN){
         AlgorithmsLib lib = new AlgorithmsLib();
         long result = lib.fastExponentiationAlgorithm(numC,numD,numN);
         System.out.println("RSA decrypt result= "+result);
+        return result;
     }
 
     //
@@ -87,7 +89,7 @@ public class RSA {
     //
     //  evasdrop and decrypt cipher text (numC) by known public key numE and numN
     //
-    public void eavesdropDecryptCiphertext(long numC, long numE, long numN){
+    public long eavesdropDecryptCiphertext(long numC, long numE, long numN){
         long decryptionKey = findDecryptionKey(numE,numN);
         AlgorithmsLib lib = new AlgorithmsLib();
 //        System.out.println("phi ="+phi);
@@ -95,6 +97,21 @@ public class RSA {
 //        System.out.println(numC+","+decryptionKey+","+numN);
         long result = lib.fastExponentiationAlgorithm(numC,decryptionKey,numN);
         System.out.println("RSA eavesdrop and decrypt result= "+result);
+        return result;
+    }
+
+    //
+    //  evasdrop and decrypt cipher text (numC) by known public key numE and numN
+    //
+    public long eavesdropDecryptCiphertextForString(Long numC, String numEs, String numNs){
+//        long numC = Long.valueOf(numCs);
+        long numE = Long.valueOf(numEs);
+        long numN = Long.valueOf(numNs);
+        long decryptionKey = findDecryptionKey(numE,numN);
+        AlgorithmsLib lib = new AlgorithmsLib();
+        long result = lib.fastExponentiationAlgorithm(numC,decryptionKey,numN);
+        System.out.println("RSA eavesdrop and decrypt result= "+result);
+        return result;
     }
 
     //
